@@ -1,0 +1,28 @@
+.sidebar {
+  background-color: #1E1E2E !important;
+  color: #CBD5E1 !important;
+  border-right: none !important;
+
+  :global(.MuiListItemIcon-root) {
+    color: #94A3B8;
+  }
+}
+
+.logoArea {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px 12px;
+  min-height: 64px;
+
+  :global(.MuiIconButton-root) {
+    color: #94A3B8;
+  }
+}
+
+.logoText {
+  color: #F1F5F9;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+}

@@ -50,7 +50,8 @@ export function LoginForm() {
         sx={{
           width: '100%',
           maxWidth: 400,
-          padding: 4,
+          mx: 2,
+          padding: { xs: 3, sm: 4 },
           backgroundColor: 'background.paper',
           borderRadius: 2,
           boxShadow: '0 1px 3px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.06)',

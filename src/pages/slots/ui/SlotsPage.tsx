@@ -110,10 +110,10 @@ export function SlotsPage() {
   }, [slots]);
 
   return (
-    <Box sx={{ p: 4 }}>
+    <Box sx={{ p: { xs: 2, sm: 3, md: 4 } }}>
       <Typography variant="h4" mb={3}>Временные слоты</Typography>
 
-      <Stack direction="row" spacing={2} mb={3} flexWrap="wrap">
+      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} mb={3} flexWrap="wrap">
         <DatePicker
           label="Дата"
           value={dateFilter ? dayjs(dateFilter) : null}
@@ -157,8 +157,8 @@ export function SlotsPage() {
                         .filter(Boolean);
 
                       return (
-                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                          <Box display="flex" alignItems="center" gap={1} flexWrap="wrap">
+                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 1 }}>
+                          <Box display="flex" alignItems="center" gap={1} flexWrap="wrap" sx={{ minWidth: 0 }}>
                             <AccessTime sx={{ fontSize: 22, color: 'primary.main' }} />
                             <Typography variant="h6" fontWeight={700}>{time}</Typography>
                             {bookedWithInfo.map((booking: any) => (

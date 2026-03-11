@@ -1,10 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import { Box, IconButton, Tooltip } from '@mui/material';
-import { Logout, DarkMode, LightMode } from '@mui/icons-material';
+import { Logout, DarkMode, LightMode, Menu } from '@mui/icons-material';
 import { useColorMode } from '@/app/providers/ThemeProvider';
 import { useTheme } from '@mui/material/styles';
 
-export function Header() {
+interface HeaderProps {
+  onMenuClick?: () => void;
+}
+
+export function Header({ onMenuClick }: HeaderProps) {
   const navigate = useNavigate();
   const theme = useTheme();
   const { toggle } = useColorMode();
@@ -26,6 +30,11 @@ export function Header() {
         px: 2,
       }}
     >
+      {onMenuClick && (
+        <IconButton onClick={onMenuClick} color="inherit" sx={{ mr: 1 }}>
+          <Menu />
+        </IconButton>
+      )}
       <Box flex={1} />
       <Tooltip title={theme.palette.mode === 'light' ? 'Тёмная тема' : 'Светлая тема'}>
         <IconButton onClick={toggle} color="inherit">

@@ -21,21 +21,32 @@ const NAV_ITEMS = [
 interface SidebarProps {
   collapsed: boolean;
   onToggle: () => void;
+  mobile?: boolean;
+  mobileOpen?: boolean;
+  onMobileClose?: () => void;
 }
 
-export function Sidebar({ collapsed, onToggle }: SidebarProps) {
+export function Sidebar({ collapsed, onToggle, mobile, mobileOpen, onMobileClose }: SidebarProps) {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
   const width = collapsed ? 72 : 260;
 
+  const handleNavigate = (path: string) => {
+    navigate(path);
+    if (mobile && onMobileClose) onMobileClose();
+  };
+
   return (
     <Drawer
-      variant="permanent"
+      variant={mobile ? 'temporary' : 'permanent'}
+      open={mobile ? mobileOpen : true}
+      onClose={onMobileClose}
       PaperProps={{
         className: styles.sidebar,
-        sx: { width, transition: 'width 0.2s ease', overflow: 'hidden' },
+        sx: { width: mobile ? 260 : width, transition: 'width 0.2s ease', overflow: 'hidden' },
       }}
+      ModalProps={mobile ? { keepMounted: true } : undefined}
     >
       {/* Лого */}
       <Box className={styles.logoArea} sx={{ width }}>
@@ -59,7 +70,7 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
               <Tooltip title={collapsed ? item.label : ''} placement="right">
                 <ListItemButton
                   selected={active}
-                  onClick={() => navigate(item.path)}
+                  onClick={() => handleNavigate(item.path)}
                   sx={{
                     borderRadius: 2,
                     justifyContent: collapsed ? 'center' : 'flex-start',

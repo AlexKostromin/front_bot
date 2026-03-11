@@ -94,11 +94,11 @@ export function BookingsPage() {
   ];
 
   return (
-    <Box sx={{ p: 4 }}>
+    <Box sx={{ p: { xs: 2, sm: 3, md: 4 } }}>
       <Typography variant="h4" gutterBottom>Брони</Typography>
 
       {/* Фильтры */}
-      <Stack direction="row" spacing={2} sx={{ mb: 3 }} flexWrap="wrap">
+      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ mb: 3 }} flexWrap="wrap">
         <TextField
           select
           label="Статус"
@@ -145,7 +145,7 @@ export function BookingsPage() {
         anchor="right"
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
-        PaperProps={{ sx: { width: 400, p: 3 } }}
+        PaperProps={{ sx: { width: { xs: '100%', sm: 400 }, p: 3 } }}
       >
         <Typography variant="h6" gutterBottom>Смена статуса брони</Typography>
         {selectedBooking && (

@@ -22,7 +22,7 @@ export function SubjectsPage() {
   ];
 
   return (
-    <Box sx={{ p: 4 }}>
+    <Box sx={{ p: { xs: 2, sm: 3, md: 4 } }}>
       <Typography variant="h4" gutterBottom>Предметы</Typography>
 
       <DataTable

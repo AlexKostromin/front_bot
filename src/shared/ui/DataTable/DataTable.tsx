@@ -85,6 +85,12 @@ export function DataTable<T>({
         rowsPerPageOptions={[10, 20, 50]}
         labelRowsPerPage="На странице:"
         labelDisplayedRows={({ from, to, count }) => `${from}–${to} из ${count}`}
+        sx={{
+          '.MuiTablePagination-toolbar': {
+            flexWrap: 'wrap',
+            justifyContent: { xs: 'center', sm: 'flex-end' },
+          },
+        }}
       />
     </Paper>
   );

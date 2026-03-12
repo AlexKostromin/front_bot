@@ -20,4 +20,5 @@ jobs:
             cd /opt/tg-bot/front_bot
             git pull origin main
             cd /opt/tg-bot
-            docker compose up -d --build frontend
+            docker compose build --no-cache frontend
+            docker compose up -d frontend
